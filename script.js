@@ -6,6 +6,8 @@ const switcherCircle = document.querySelector(`.switcher-circle`);
 const themeSwitcherIcons = document.querySelectorAll(`.theme-switcher--icon`);
 const themeSwitchers = document.querySelectorAll(`.switch-theme`);
 
+const quizzesList = document.querySelectorAll(`.quiz-topics-list--li`);
+const ind = document.querySelectorAll(`.ind`);
 
 
 themeSwitchers.forEach(switchTheme);
@@ -18,7 +20,9 @@ function switchTheme (el) {
         themeSwitcherIcons.forEach(el => {
             el.classList.toggle(`display-none`)
         })
-        body.classList.toggle(`body-dark`)
+        body.classList.toggle(`body-dark`);
+        quizzesList.forEach(el => el.classList.toggle(`list--dark`));
+        ind.forEach(el => el.classList.toggle(`dark-p`));
     })
 }
 
