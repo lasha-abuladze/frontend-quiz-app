@@ -27,7 +27,8 @@ body {
     transition: all 0.2s !important;
 }
 
-.header {
+.main {
+    .header {
     // background-color: rgb(88, 56, 56);
     display: flex;
     justify-content: end;
@@ -66,4 +67,8 @@ body {
         }
     }
     
+    }
+
+    
 }
+

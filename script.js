@@ -11,8 +11,6 @@ const themeSwitchers = document.querySelectorAll(`.switch-theme`);
 themeSwitchers.forEach(switchTheme);
 
 
-
-
 /// switchTheme function swotchs theme from light to dark and vice verca;
 function switchTheme (el) {
     el.addEventListener(`click`, () => {
