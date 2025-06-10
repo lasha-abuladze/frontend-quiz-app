@@ -1,5 +1,5 @@
 .display-none {
-  display: none; }
+  display: none !important; }
 
 .dark-switcher {
   left: calc(100% - 4px) !important;
@@ -100,3 +100,66 @@ body {
       background-color: #EBF0FF; }
     .main .section--welcom .quiz-topics-list li .icon--accessibility {
       background-color: #F6E7FF; }
+
+.main .section-quiz {
+  padding: 32px 24px;
+  box-sizing: border-box; }
+  .main .section-quiz .div--question .question-number {
+    font-size: 14px;
+    font-weight: 400;
+    color: #626C7F;
+    font-style: italic;
+    margin-bottom: 12px; }
+  .main .section-quiz .div--question .question {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 24px; }
+  .main .section-quiz .form--answers {
+    margin-top: 40px; }
+    .main .section-quiz .form--answers .answers-list .answers-list--li {
+      margin-bottom: 12px;
+      border-radius: 12px;
+      height: 64px;
+      position: relative; }
+      .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label {
+        background-color: #fff;
+        box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500; }
+        .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label .answer-number {
+          background-color: #F4F6FA;
+          width: 40px;
+          height: 40px;
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #626C7F;
+          border-radius: 5px; }
+    .main .section-quiz .form--answers .form-btn {
+      display: block;
+      width: 100%;
+      height: 56px;
+      background-color: #A729F5;
+      border-radius: 12px;
+      box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      outline: none;
+      cursor: pointer; }
