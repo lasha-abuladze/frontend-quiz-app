@@ -201,12 +201,17 @@ body {
                         border-radius: 12px;
                         box-sizing: border-box;
                         @include flex-row();
-                        gap: 16px;
+                        justify-content: space-between;
                         text-transform: uppercase;
                         cursor: pointer;
 
                         font-size: 18px;
                         font-weight: 500;
+
+                        p {
+                            @include flex-row();
+                            gap: 16px;
+                        }
 
                         .answer-number {
                             background-color: #F4F6FA;
@@ -217,6 +222,13 @@ body {
                             justify-content: center;
                             color: #626C7F;
                             border-radius: 5px;
+                        }
+
+                        .div--correct-wrong--icons {
+                            img {
+                                width: 32px;
+                                height: 32px;
+                            }
                         }
 
                     }

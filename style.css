@@ -135,11 +135,15 @@ body {
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        gap: 16px;
+        justify-content: space-between;
         text-transform: uppercase;
         cursor: pointer;
         font-size: 18px;
         font-weight: 500; }
+        .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label p {
+          display: flex;
+          align-items: center;
+          gap: 16px; }
         .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label .answer-number {
           background-color: #F4F6FA;
           width: 40px;
@@ -150,6 +154,9 @@ body {
           justify-content: center;
           color: #626C7F;
           border-radius: 5px; }
+        .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label .div--correct-wrong--icons img {
+          width: 32px;
+          height: 32px; }
     .main .section-quiz .form--answers .form-btn {
       display: block;
       width: 100%;

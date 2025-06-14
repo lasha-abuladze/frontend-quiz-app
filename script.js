@@ -10,8 +10,16 @@ const quizzesList = document.querySelectorAll(`.quiz-topics-list--li`);
 const ind = document.querySelectorAll(`.ind`);
 
 
+const sections = document.querySelectorAll(`.section`);
+const quizTopicsListBtn = document.querySelectorAll(`.quiz-topics-list--li`);
+
+
+let quizTopic = ``;
+
+
 themeSwitchers.forEach(switchTheme);
 
+quizTopicsListBtn.forEach(chooseQuiz);
 
 /// switchTheme function swotchs theme from light to dark and vice verca;
 function switchTheme (el) {
@@ -25,4 +33,18 @@ function switchTheme (el) {
         ind.forEach(el => el.classList.toggle(`dark-p`));
     })
 }
+
+
+function chooseQuiz (el) {
+
+    el.addEventListener(`click`, () => {
+        quizTopic = el.querySelector(`.quiz-topic`).textContent.toUpperCase();
+        console.log(quizTopic)
+        sections.forEach(el => el.classList.toggle(`display-none`))
+    })
+}
+
+
+
+
 
