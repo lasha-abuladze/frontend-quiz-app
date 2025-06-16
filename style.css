@@ -22,6 +22,12 @@ body {
 .dark-p {
   color: #ABC1E1 !important; }
 
+.wrong-answer--label {
+  outline: 2px solid red; }
+
+.correct-answer--label {
+  outline: 2px solid #26D782; }
+
 .main .header {
   display: flex;
   justify-content: end;
@@ -157,8 +163,8 @@ body {
           color: #626C7F;
           border-radius: 5px; }
         .main .section-quiz .form--answers .answers-list .answers-list--li .answers-list--label .div--correct-wrong--icons img {
-          width: 32px;
-          height: 32px; }
+          width: 50px;
+          height: 50px; }
     .main .section-quiz .form--answers .form-btn {
       display: block;
       width: 100%;
@@ -172,3 +178,13 @@ body {
       border: none;
       outline: none;
       cursor: pointer; }
+    .main .section-quiz .form--answers .select-answer {
+      color: #EE5454;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px; }
+      .main .section-quiz .form--answers .select-answer img {
+        width: 32px;
+        height: 32px; }

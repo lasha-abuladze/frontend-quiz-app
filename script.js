@@ -16,12 +16,19 @@ const quizTopicsListBtn = document.querySelectorAll(`.quiz-topics-list--li`);
 const quizHeader = document.querySelector(`.quiz-header`);
 const answersList = document.querySelector(`.answers-list`);
 
+const submitBtn = document.querySelector(`.submit-btn`);
+const selectAnswer = document.querySelector(`.select-answer`);
+
 
 let questionNumber = 0;
 let answerIndex = ``;
 
 let quizTopic = ``;
 let quiz;
+
+let label;
+let chosenAnswer = ``;
+let correcrAnswer = ``;
 
 themeSwitchers.forEach(switchTheme);
 
@@ -90,6 +97,9 @@ function displayQuestion(quiz) {
     `
 
     quizHeader.insertAdjacentHTML(`afterbegin`, quizQuestionHTML);
+
+    correcrAnswer = quiz[questionNumber - 1].answer;
+    // console.log(correcrAnswer);
 }
 
 
@@ -117,10 +127,15 @@ function displayAnswers(quiz) {
                         <b class="answer-number">
                             ${answerIndex}
                         </b>
-                        ${el}
+                        <span class="span-answer">${el}</span>
                     </p>
+                    <div class="div--correct-wrong--icons">
+                        <img class="correct-icon display-none" src="./assets/images/icon-correct.svg" alt="correct icon">
+                        <img class="error-icon display-none" src="./assets/images/icon-error.svg" alt="error icon">
+                    </div>
                 </label>
-            </li>    
+            </li>
+            
         `
 
         answersList.insertAdjacentHTML(`afterbegin`, answerHTML);
@@ -130,4 +145,63 @@ function displayAnswers(quiz) {
 }
 
 
+
+answersList.addEventListener(`click`, (e) => {
+
+    const clickedLabel = e.target.closest(`.answers-list--label`);
+    if(!clickedLabel) return;
+
+    chosenAnswer = clickedLabel.querySelector(`.span-answer`).textContent;
+    label = clickedLabel;
+})
+
+
+
+submitBtn.addEventListener(`click`, (e) => {
+
+    e.preventDefault();
+
+    if(chosenAnswer === ``) {
+        console.log(`choose answer`)
+        selectAnswer.classList.remove(`display-none`)
+
+    } else if(chosenAnswer !== `` && chosenAnswer !== correcrAnswer) {
+        console.log(`wrong answer`)
+        console.log(chosenAnswer);
+        console.log(correcrAnswer);
+
+        if(!selectAnswer.classList.contains(`display-none`)) {
+            selectAnswer.classList.add(`display-none`)
+        }
+
+        document.querySelectorAll(`.answers-list--label`)
+        .forEach(el => {
+            if(el.classList.contains(`wrong-answer--label`)) {
+                el.classList.remove(`wrong-answer--label`)
+            }
+        })
+
+        label.classList.add(`wrong-answer--label`);
+
+
+
+    } else if (chosenAnswer !== `` && chosenAnswer === correcrAnswer) {
+        console.log(`hiiiii`);
+
+        if(!selectAnswer.classList.contains(`display-none`)) {
+            selectAnswer.classList.add(`display-none`)
+        }
+
+        document.querySelectorAll(`.answers-list--label`)
+        .forEach(el => {
+            if(el.classList.contains(`wrong-answer--label`)) {
+                el.classList.remove(`wrong-answer--label`)
+            }
+        })
+        
+        label.classList.add(`correct-answer--label`);
+        
+    }
+
+})
 
