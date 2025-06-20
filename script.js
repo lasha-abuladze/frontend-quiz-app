@@ -18,6 +18,7 @@ const answersList = document.querySelector(`.answers-list`);
 
 const submitBtn = document.querySelector(`.submit-btn`);
 const selectAnswer = document.querySelector(`.select-answer`);
+const submitBtns = document.querySelectorAll(`.form-btn`);
 
 
 let questionNumber = 0;
@@ -61,8 +62,6 @@ function chooseQuiz (el) {
 }
 
 
-
-
 function displayQuiz () {
 
     fetch(`./data.json`).then(res => res.json()).then(data => {
@@ -79,8 +78,6 @@ function displayQuiz () {
     })
 
 }
-
-
 
 function displayQuestion(quiz) {
 
@@ -102,8 +99,6 @@ function displayQuestion(quiz) {
     // console.log(correcrAnswer);
 }
 
-
-
 function displayAnswers(quiz) {
     answersList.textContent = ``;
 
@@ -121,7 +116,7 @@ function displayAnswers(quiz) {
 
         const answerHTML = `
             <li class="answers-list--li">
-                <input type="radio" id="${i}" name="answer">
+                <input class="answers-list--input" type="radio" id="${i}" name="answer">
                 <label class="answers-list--label" for="${i}">
                     <p>
                         <b class="answer-number">
@@ -144,8 +139,6 @@ function displayAnswers(quiz) {
 
 }
 
-
-
 answersList.addEventListener(`click`, (e) => {
 
     const clickedLabel = e.target.closest(`.answers-list--label`);
@@ -162,44 +155,33 @@ submitBtn.addEventListener(`click`, (e) => {
     e.preventDefault();
 
     if(chosenAnswer === ``) {
-        console.log(`choose answer`)
         selectAnswer.classList.remove(`display-none`)
 
     } else if(chosenAnswer !== `` && chosenAnswer !== correcrAnswer) {
-        console.log(`wrong answer`)
-        console.log(chosenAnswer);
-        console.log(correcrAnswer);
+        questionNumber++;
 
         if(!selectAnswer.classList.contains(`display-none`)) {
             selectAnswer.classList.add(`display-none`)
         }
 
-        document.querySelectorAll(`.answers-list--label`)
-        .forEach(el => {
-            if(el.classList.contains(`wrong-answer--label`)) {
-                el.classList.remove(`wrong-answer--label`)
-            }
-        })
+        const inp = answersList.querySelectorAll(`.answers-list--input`);       
 
-        label.classList.add(`wrong-answer--label`);
+        label.classList.add(`wrong-answer--label`)
+        inp.forEach(el => el.remove());
 
-
+        submitBtns.forEach(el => el.classList.toggle(`display-none`));
 
     } else if (chosenAnswer !== `` && chosenAnswer === correcrAnswer) {
-        console.log(`hiiiii`);
+        questionNumber++;
 
         if(!selectAnswer.classList.contains(`display-none`)) {
             selectAnswer.classList.add(`display-none`)
-        }
+        }        
 
-        document.querySelectorAll(`.answers-list--label`)
-        .forEach(el => {
-            if(el.classList.contains(`wrong-answer--label`)) {
-                el.classList.remove(`wrong-answer--label`)
-            }
-        })
-        
+        const inp = answersList.querySelectorAll(`.answers-list--input`);
         label.classList.add(`correct-answer--label`);
+        inp.forEach(el => el.remove());
+        submitBtns.forEach(el => el.classList.toggle(`display-none`));
         
     }
 

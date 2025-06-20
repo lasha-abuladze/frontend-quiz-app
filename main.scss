@@ -39,11 +39,21 @@ body {
 }
 
 .wrong-answer--label {
-    outline: 2px solid red;
+    border: 2px solid #EE5454 !important;
+
+    .answer-number {
+        background-color: #EE5454 !important;
+        color: #fff !important;
+    }
 }
 
 .correct-answer--label {
-    outline: 2px solid #26D782;
+    border: 2px solid #26D782 !important;
+    
+    .answer-number {
+        background-color: #26D782 !important;
+        color: #fff !important;
+    }
 }
 
 
@@ -200,6 +210,15 @@ body {
                     height: 64px;
                     position: relative;
 
+                    .answers-list--input:checked + .answers-list--label {
+                        border: 2px solid #A729F5;
+
+                        .answer-number {
+                            background-color: #A729F5;
+                            color: #FFF;
+                        }
+                    }
+
                     .answers-list--label {
                         background-color: #fff;
                         box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
@@ -215,6 +234,9 @@ body {
                         justify-content: space-between;
                         text-transform: uppercase;
                         cursor: pointer;
+                        transition: all 0.2s;
+                        border: 2px solid #fff;
+                        box-sizing: border-box;
 
                         font-size: 18px;
                         font-weight: 500;
@@ -245,6 +267,7 @@ body {
                         }
 
                     }
+
                 }
 
             }
