@@ -13,10 +13,24 @@
     display: none !important ;
 }
 
+.subtittle-dark {
+    color: #ABC1E1 !important;
+}
+
+.listcell-dark {
+    background-color: #3B4D66 !important;
+}
+
+.body-dark {
+    background-color: #313E51;
+    color: #fff;
+}
+
 body {
     background-color: #F4F6FA;
     color: #313E51; 
     font-family: "Rubik", sans-serif;
+    transition: all 0.2s;
 }
 
 
@@ -26,7 +40,7 @@ body {
         padding: 16px 24px;
         box-sizing: border-box;
         @include flexRow();
-        justify-content: space-between;
+        justify-content: end;
 
         .figure--quiz-logo {
 
@@ -82,6 +96,10 @@ body {
     .section {
         padding: 32px 24px;
         box-sizing: border-box;
+
+        .subtitle {
+            transition: all 0.2s;
+        }
     }
 
     .section--welcome-to-quiz {
