@@ -5,6 +5,7 @@ const themeSwitcherBtn = document.querySelector(`.div--theme-switcher`);
 const themeSwitcherIcons = document.querySelectorAll(`.theme-switcher--icon`);
 let subTittle = document.querySelector(`.subtittle`);
 let listCell = document.querySelectorAll(`.quiz-list--li`);
+const xx = document.querySelector(`.theme-switcher--circle`);
 
 
 
@@ -22,4 +23,5 @@ function switchTheme() {
     themeSwitcherIcons.forEach(el => el.classList.toggle(`display-none`));
     subTittle.classList.toggle(`subtittle-dark`);
     listCell.forEach(el => el.classList.toggle(`listcell-dark`));
+    xx.classList.toggle(`theme-switcher--circle-dark`)
 }

@@ -10,6 +10,11 @@
   background-color: #3B4D66 !important;
 }
 
+.theme-switcher--circle-dark {
+  left: calc(100% - 4px) !important;
+  transform: translate(-100%, -50%) !important;
+}
+
 .body-dark {
   background-color: #313E51;
   color: #fff;
@@ -71,13 +76,11 @@ body {
   top: 50%;
   left: 4px;
   transform: translateY(-50%);
+  transition: all 0.2s;
 }
 .main-section .section {
   padding: 32px 24px;
   box-sizing: border-box;
-}
-.main-section .section .subtitle {
-  transition: all 0.2s;
 }
 .main-section .section--welcome-to-quiz header {
   margin-bottom: 40px;
