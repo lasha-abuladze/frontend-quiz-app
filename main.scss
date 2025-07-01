@@ -26,6 +26,20 @@
     transform: translate(-100%, -50%) !important;
 }
 
+.line--dark {
+    background-color: #3B4D66 !important;
+}
+
+.answer-label--dark {
+    background-color: #3B4D66 !important;
+    border: 3px solid #3B4D66 !important;
+}
+
+
+
+
+
+
 .body-dark {
     background-color: #313E51;
     color: #fff;
@@ -47,22 +61,22 @@ body {
         @include flexRow();
         justify-content: end;
 
-        .figure--quiz-logo {
+        // .figure--quiz-logo {
 
-            @include flexRow();
-            gap: 16px;
-            font-size: 18px;
-            font-weight: 500;
+        //     @include flexRow();
+        //     gap: 16px;
+        //     font-size: 18px;
+        //     font-weight: 500;
 
-            img {
-                width: 40px;
-                height: 40px;
-                padding: 6px;
-                box-sizing: border-box;
-                border-radius: 6px;
-                background-color: #FFF1E9;
-            }
-        }
+        //     img {
+        //         width: 40px;
+        //         height: 40px;
+        //         padding: 6px;
+        //         box-sizing: border-box;
+        //         border-radius: 6px;
+        //         background-color: #FFF1E9;
+        //     }
+        // }
 
         .div--light-dark {
             @include flexRow();
@@ -106,14 +120,14 @@ body {
         .section-header {
             margin-bottom: 40px;
 
-            .subtittle {
-                font-size: 14px;
-                font-style: italic;
-                font-weight: 400;
-                color: #626C7F;
-            }
         }
-
+        
+        .subtittle {
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 400;
+            color: #626C7F;
+        }
         .btn-gen {
             display: block;
             width: 100%;
@@ -128,6 +142,23 @@ body {
             border-radius: 12px;
             box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
             cursor: pointer;
+        }
+
+        .figure--quiz-logo {
+
+            @include flexRow();
+            gap: 16px;
+            font-size: 18px;
+            font-weight: 500;
+
+            img {
+                width: 40px;
+                height: 40px;
+                padding: 6px;
+                box-sizing: border-box;
+                border-radius: 6px;
+                background-color: #FFF1E9;
+            }
         }
     }
 
@@ -216,6 +247,9 @@ body {
                 border-radius: 100px;
                 @include flexRow();
                 margin-top: 24px;
+                padding: 0px 4px;
+                box-sizing: border-box;
+                transition: all 0.2s;
     
                 .inner--line {
                     width: 60%;
@@ -256,7 +290,7 @@ body {
                 box-sizing: border-box;
                 border: 3px solid #fff;
                 cursor: pointer;
-                transition: all 0.1s;
+                transition: all 0.2s;
 
                 p {
                     font-size: 18px;
@@ -295,4 +329,48 @@ body {
         }
 
     } 
+
+    .section--quiz-completed {
+        
+        header {
+            p {
+                font-size: 40px;
+                font-weight: 300;
+
+                b {
+                    font-weight: 500;
+                    display: block;
+                }
+            }
+        }
+
+        .final-score {
+            background-color: #E0FDEF;
+            text-align: center;
+            padding: 32px;
+            box-sizing: border-box;
+            border-radius: 12px;
+            box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+            background-color: #fff;
+
+            figure {
+                display: block;
+                max-width: fit-content;
+                @include flexRow();
+                gap: 16px;
+                margin: auto;
+                margin-bottom: 16px;
+                
+            }
+
+            p {
+                b {
+                    font-size: 88px;
+                    font-weight: 500;
+                    display: block;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
 }
