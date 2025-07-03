@@ -17,13 +17,14 @@ const sections = document.querySelectorAll(`.section`);
 const quizList = document.querySelector(`.quiz-list`);
 
 const quizHeader = document.querySelector(`.section--quiz-header`);
-
+const answersList = document.querySelector(`.ul--answers-list`);
 
 
 let chosenQuizTopic;
 let chosenQuiz;
 
 let questionNumber = 1;
+let answerOrder;
 
 
 
@@ -82,6 +83,7 @@ function displayQuiz() {
         })
 
         displayQuestion();
+        displayAnswers();
     })
 
 }
@@ -103,4 +105,49 @@ function displayQuestion() {
     `
 
     quizHeader.insertAdjacentHTML(`afterbegin`, questionHTML);
+
+    console.log(chosenQuiz)
+}
+
+
+function displayAnswers() {
+
+    answersList.textContent = ``;
+
+    chosenQuiz.questions[questionNumber -1].options.forEach((el,i) => {
+
+        displayAnsersOrder(i);
+
+        const answersHTML = `
+            <li class="answers-list--li">
+                <input type="radio" name="answer" id="${i}">
+                <label class="answer-label" for="${i}">
+                    <p>
+                        <span class="questions-order">${answerOrder}</span>
+                        ${el}
+                    </p>
+    
+                    <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
+                    <img class="answer-icon display-none" src="./assets/images/icon-correct.svg" alt="correct_icon">
+                </label>
+            </li>
+        `
+
+        answersList.insertAdjacentHTML(`afterbegin`, answersHTML);
+    })
+
+    
+}
+
+
+function displayAnsersOrder(i) {
+    if(i === 0) {
+        answerOrder = `d`
+    } else if (i === 1) {
+        answerOrder = `c`
+    } else if (i === 2) {
+        answerOrder = `b`
+    } else if (i === 3) {
+        answerOrder = `a`
+    }
 }
