@@ -24,6 +24,7 @@ const submitAnswer = document.querySelector(`.submit-answer--btn`);
 const nextQuestionBtn = document.querySelector(`.next-question--btn`);
 const formBtns = document.querySelectorAll(`.submit-btn`);
 const selectAnswerT = document.querySelector(`.select-answer`);
+const finalScoreDiv = document.querySelector(`.final-score`);
 
 let inputs;
 
@@ -87,8 +88,6 @@ function displayQuiz() {
             }
         });
 
-        console.log(data)
-
         data.quizzes.forEach(el => {
             if(el.title.toUpperCase() === chosenQuizTopic) {
                 chosenQuiz = el
@@ -118,8 +117,6 @@ function displayQuestion() {
     `
 
     quizHeader.insertAdjacentHTML(`afterbegin`, questionHTML);
-
-    console.log(chosenQuiz)
 }
 
 
@@ -131,13 +128,21 @@ function displayAnswers() {
 
         displayAnsersOrder(i);
 
+        function escapeHTML(str) {
+            return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+        } 
+
+
         const answersHTML = `
             <li class="answers-list--li">
                 <input class="input" type="radio" name="answer" id="${i}">
                 <label class="answer-label" for="${i}">
                     <p>
                         <span class="questions-order">${answerOrder}</span>
-                        <span class="answer">${el}</span>
+                        <span class="answer">${escapeHTML(el)}</span>
                     </p>
     
                     <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -169,16 +174,6 @@ function displayAnsersOrder(i) {
     }
 }
 
-
-// function chooseAnswer() {
-
-
-
-
-// }
-
-
-
 function chooseAnswer() {
 
     answersList.addEventListener(`click`, (e) => {
@@ -190,18 +185,41 @@ function chooseAnswer() {
         chosenAnswer =  answerLabel?.querySelector(`.answer`).textContent;
 
         chosenAnswerLabel = answerLabel;
-
-        console.log(chosenAnswerLabel)
     })
 }
+
+
+function displayScorSection() {
+
+    finalScoreDiv.textContent = ``;
+    
+    sections.forEach(el => {
+        if(el.classList.contains(`section--quiz-completed`)) {
+            el.classList.remove(`display-none`)
+        } else {
+            el.classList.add(`display-none`)
+        }
+    })
+
+    const finalScoreHTML = `
+        <figure class="figure--quiz-logo">
+            <img src="./assets/images/icon-html.svg" alt="html_icon">
+            <figcaption>HTML</figcaption>
+        </figure>
+        <p>
+            <b>${totalScore}</b>
+            <span class="subtittle">out of 10</span>
+        </p>        
+    `
+    finalScoreDiv.insertAdjacentHTML(`afterbegin`, finalScoreHTML);
+}
+
 
 
 submitAnswer.addEventListener(`click`, (e) => {
     e.preventDefault();
     questionNumber++;
-
-    inputs.forEach(el => el.remove());
-
+    
     if (!chosenAnswer) {
         selectAnswerT.classList.remove(`display-none`);
 
@@ -216,14 +234,38 @@ submitAnswer.addEventListener(`click`, (e) => {
 
         formBtns.forEach(el => el.classList.toggle(`display-none`));
         selectAnswerT.classList.contains(`display-none`) ? null : selectAnswerT.classList.add(`display-none`);
+        inputs.forEach(el => el.remove());
 
     } else if (chosenAnswer !== correctAnswer) {
-        totalScore++
+
         chosenAnswerLabel?.classList.add(`wrong-answer`);
         answersIcons?.forEach(el => el.style.visibility = `visible`);
-         selectAnswerT.classList.contains(`display-none`) ? null : selectAnswerT.classList.add(`display-none`);
+        formBtns.forEach(el => el.classList.toggle(`display-none`));
+        selectAnswerT.classList.contains(`display-none`) ? null : selectAnswerT.classList.add(`display-none`);
+        inputs.forEach(el => el.remove());
     }
 
-    console.log(questionNumber)
+});
+
+
+nextQuestionBtn.addEventListener(`click`, (e) => {
+    e.preventDefault();
+
+    if(questionNumber < 11) {
+
+        chosenAnswer = ``;
+        formBtns.forEach(el => el.classList.toggle(`display-none`));
+    
+        fetch(`./data.json`).then(res => res.json()).then(data => {
+    
+            displayQuestion();
+            displayAnswers();
+        })
+    } else {
+        displayScorSection();
+    }
 
 })
+
+
+
