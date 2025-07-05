@@ -97,16 +97,16 @@
                 </div> 
             </header>
 
-            <form action="#" >
+            <form class="form" action="#" >
 
                 <ul class="ul--answers-list">
 
                     <li class="answers-list--li">
-                        <input type="radio" name="answer" id="1">
+                        <input class="input" type="radio" name="answer" id="1">
                         <label class="answer-label" for="1">
                             <p>
                                 <span class="questions-order">a</span>
-                                4.5 : 1
+                                <span class="answer">4.5 : 1</span>
                             </p>
 
                             <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -115,11 +115,11 @@
                     </li>
 
                     <li class="answers-list--li">
-                        <input type="radio" name="answer" id="2">
+                        <input class="input" type="radio" name="answer" id="2">
                         <label class="answer-label" for="2">
                             <p>
                                 <span class="questions-order">b</span>
-                                3 : 1
+                                <span class="answer">3 : 1</span>
                             </p>
 
                             <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -128,11 +128,11 @@
                     </li>
 
                     <li class="answers-list--li">
-                        <input type="radio" name="answer" id="3">
+                        <input class="input" type="radio" name="answer" id="3">
                         <label class="answer-label" for="3">
                             <p>
                                 <span class="questions-order">c</span>
-                                2.5 : 1
+                                <span class="answer">2.5 : 1</span>
                             </p>
 
                             <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -141,11 +141,11 @@
                     </li>    
                     
                     <li class="answers-list--li">
-                        <input type="radio" name="answer" id="4">
+                        <input class="input" type="radio" name="answer" id="4">
                         <label class="answer-label" for="4">
                             <p>
                                 <span class="questions-order">d</span>
-                                5 : 1
+                                <span class="answer">5 : 1</span>
                             </p>
 
                             <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -157,7 +157,14 @@
 
                 <input class="btn-gen submit-btn submit-answer--btn" type="submit" value="Submit Answer">
                 <input class="btn-gen submit-btn next-question--btn display-none" type="submit" value="Next Question">
+                
+                <p class="select-answer display-none">
+                    <img src="./assets/images/icon-error.svg" alt="error_icon">
+                    Please select an answer
+                </p>
             </form>
+
+            
 
         </section>
 

@@ -35,6 +35,23 @@
     border: 3px solid #3B4D66 !important;
 }
 
+.correct-answer {
+    border: 3px solid #26D782 !important;
+
+    .questions-order {
+        background-color: #26D782 !important;
+        color: #fff !important;
+    }
+}
+
+.wrong-answer {
+    border: 3px solid #EE5454 !important;
+
+    .questions-order {
+        background-color: #EE5454 !important;
+        color: #fff !important;
+    }
+}
 
 
 
@@ -60,23 +77,6 @@ body {
         box-sizing: border-box;
         @include flexRow();
         justify-content: end;
-
-        // .figure--quiz-logo {
-
-        //     @include flexRow();
-        //     gap: 16px;
-        //     font-size: 18px;
-        //     font-weight: 500;
-
-        //     img {
-        //         width: 40px;
-        //         height: 40px;
-        //         padding: 6px;
-        //         box-sizing: border-box;
-        //         border-radius: 6px;
-        //         background-color: #FFF1E9;
-        //     }
-        // }
 
         .div--light-dark {
             @include flexRow();
@@ -198,6 +198,7 @@ body {
                 margin-bottom: 12px;
                 padding: 12px;
                 box-sizing: border-box;
+                cursor: pointer;
 
                 &:last-child {
                     margin: 0;
@@ -292,13 +293,14 @@ body {
                 cursor: pointer;
                 transition: all 0.2s;
 
+
                 p {
                     font-size: 18px;
                     font-weight: 500;
                     @include flexRow();
                     gap: 16px;
 
-                    span {
+                    .questions-order {
                         width: 40px;
                         height: 40px;
                         background-color: #F4F6FA;
@@ -307,6 +309,7 @@ body {
                         text-transform: uppercase;
                         color: #626C7F;
                         border-radius: 6px;
+                        transition: all 0.2s;
                     }
                 }
 
@@ -320,12 +323,28 @@ body {
             input:checked + .answer-label {
                 border: 3px solid #A729F5 !important;
 
-                span {
+                .questions-order {
                     background-color: #A729F5;
                     color: #fff;
+
                 }
             }
 
+        }
+
+        .select-answer {
+            @include flexRow();
+            justify-content: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 12px;
+            color: #EE5454;
+
+            img {
+                width: 32px;
+                height: 32px;
+            }
         }
 
     } 

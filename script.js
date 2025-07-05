@@ -18,13 +18,26 @@ const quizList = document.querySelector(`.quiz-list`);
 
 const quizHeader = document.querySelector(`.section--quiz-header`);
 const answersList = document.querySelector(`.ul--answers-list`);
+let answersIcons;
 
+const submitAnswer = document.querySelector(`.submit-answer--btn`);
+const nextQuestionBtn = document.querySelector(`.next-question--btn`);
+const formBtns = document.querySelectorAll(`.submit-btn`);
+const selectAnswerT = document.querySelector(`.select-answer`);
+
+let inputs;
 
 let chosenQuizTopic;
 let chosenQuiz;
 
 let questionNumber = 1;
+let totalScore = 0;
 let answerOrder;
+
+
+let chosenAnswerLabel;
+let chosenAnswer;
+let correctAnswer;
 
 
 
@@ -120,11 +133,11 @@ function displayAnswers() {
 
         const answersHTML = `
             <li class="answers-list--li">
-                <input type="radio" name="answer" id="${i}">
+                <input class="input" type="radio" name="answer" id="${i}">
                 <label class="answer-label" for="${i}">
                     <p>
                         <span class="questions-order">${answerOrder}</span>
-                        ${el}
+                        <span class="answer">${el}</span>
                     </p>
     
                     <img class="answer-icon" src="./assets/images/icon-error.svg" alt="error_icon">
@@ -136,7 +149,11 @@ function displayAnswers() {
         answersList.insertAdjacentHTML(`afterbegin`, answersHTML);
     })
 
-    
+    correctAnswer = chosenQuiz.questions[questionNumber -1].answer;
+
+    inputs = document.querySelectorAll(`.input`);
+
+    chooseAnswer();
 }
 
 
@@ -151,3 +168,62 @@ function displayAnsersOrder(i) {
         answerOrder = `a`
     }
 }
+
+
+// function chooseAnswer() {
+
+
+
+
+// }
+
+
+
+function chooseAnswer() {
+
+    answersList.addEventListener(`click`, (e) => {
+        const answerLabel = e.target.closest(`.answer-label`);
+
+        if(!answerLabel) return;
+
+        answersIcons = answerLabel.querySelectorAll(`.answer-icon`);
+        chosenAnswer =  answerLabel?.querySelector(`.answer`).textContent;
+
+        chosenAnswerLabel = answerLabel;
+
+        console.log(chosenAnswerLabel)
+    })
+}
+
+
+submitAnswer.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    questionNumber++;
+
+    inputs.forEach(el => el.remove());
+
+    if (!chosenAnswer) {
+        selectAnswerT.classList.remove(`display-none`);
+
+    } else if (chosenAnswer === correctAnswer) {
+        totalScore++;
+
+        chosenAnswerLabel?.classList.add(`correct-answer`);
+        answersIcons?.forEach(el => {
+            el.classList.toggle(`display-none`);
+            el.style.visibility = `visible`
+        });
+
+        formBtns.forEach(el => el.classList.toggle(`display-none`));
+        selectAnswerT.classList.contains(`display-none`) ? null : selectAnswerT.classList.add(`display-none`);
+
+    } else if (chosenAnswer !== correctAnswer) {
+        totalScore++
+        chosenAnswerLabel?.classList.add(`wrong-answer`);
+        answersIcons?.forEach(el => el.style.visibility = `visible`);
+         selectAnswerT.classList.contains(`display-none`) ? null : selectAnswerT.classList.add(`display-none`);
+    }
+
+    console.log(questionNumber)
+
+})
