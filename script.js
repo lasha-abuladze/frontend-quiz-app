@@ -26,6 +26,8 @@ const formBtns = document.querySelectorAll(`.submit-btn`);
 const selectAnswerT = document.querySelector(`.select-answer`);
 const finalScoreDiv = document.querySelector(`.final-score`);
 
+const playAgainBtn = document.querySelector(`.play-again--btn`);
+
 let inputs;
 
 let chosenQuizTopic;
@@ -267,5 +269,38 @@ nextQuestionBtn.addEventListener(`click`, (e) => {
 
 })
 
+playAgainBtn.addEventListener(`click`, () => {
+
+    sections.forEach(el => {
+        if(!el.classList.contains(`display-none`)){
+            el.classList.add(`display-none`)
+        }
+
+        if(el.classList.contains(`section--welcome-to-quiz`)) {
+            el.classList.remove(`display-none`)
+        }
+        
+    })
+
+    formBtns.forEach(el => el.classList.toggle(`display-none`));
+    chosenQuizTopic;
+    chosenQuiz;
+
+    questionNumber = 1;
+    totalScore = 0;
+    answerOrder;
 
 
+    chosenAnswerLabel;
+    chosenAnswer;
+    correctAnswer;
+})
+
+// const xx = `lasha magari programisti gaxdeba`
+
+
+// const arr = xx.split(` `)
+
+// arr.forEach(el => {
+//     console.log(el)
+// })
